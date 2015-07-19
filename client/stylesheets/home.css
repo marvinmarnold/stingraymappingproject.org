@@ -1,0 +1,32 @@
+.learn-more-button {
+  font-size: 50px;
+}
+
+.text-dark {
+  color: black;
+}
+
+#map {
+  height: 700px;
+}
+
+.map-info {
+  background-color: #EAEAEA;
+}
+
+.map-div {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+.home-bullet {
+  font-size: 35px;
+  background-color: #EAEAEA;
+  padding: 10px;
+  border-radius: 25px;
+  border: 2px solid;
+}
+
+.protect-yourself {
+  font-size: 40px;
+}
