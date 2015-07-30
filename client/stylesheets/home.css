@@ -7,11 +7,12 @@
 }
 
 #map {
-  height: 700px;
+  height: 100%;
+  min-height: 100%
 }
 
 .map-info {
-  background-color: #EAEAEA;
+  /*background-color: #EAEAEA;*/
 }
 
 .map-div {
@@ -29,4 +30,12 @@
 
 .protect-yourself {
   font-size: 40px;
+}
+
+.home-title-2 {
+  padding-top: 65%;
+}
+
+.home-title-3 {
+  padding-top: 5%;
 }

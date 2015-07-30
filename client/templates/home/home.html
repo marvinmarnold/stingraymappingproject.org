@@ -1,93 +1,29 @@
 <template name="home">
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-7 map-div">
+<div class="container-fluid fullHeight">
+  <div class="row fullHeight">
+    <div class="col-md-7 map-div fullHeight">
       {{> stingrayMap}}
     </div>
-    <div class="col-md-5 map-info">
-
-      <h2 class="text-center marginTop50">
-        Stingray detected <b>5 minutes ago</b> in <br/>New Orleans, LA
-      </h2>
-
-      <div class="row">
-        <div class="col-md-11 col-md-offset-1">
-          <h3 class="marginTop50"><b>Most surveilled places:</b></h3>
-        </div>
-      </div>
-
-      {{#each places}}
-        <div class="row">
-          <div class="col-md-2 col-md-offset-1">
-            <h3>
-              <span class="label label-warning text-dark">
-                {{number}}
-              </span>
-            </h3>
+    <div class="col-md-5 map-info fullHeight">
+      <div class="row fullHeight">
+        <div class="col-md-10 col-md-offset-1 fullHeight">
+          <h1 class="text-center">
+            Police use Stingrays to track and surveil us.
+          </h1>
+          <div class="home-title-2">
+            <h2 class="text-center">
+              Protect yourself
+            </h2>
           </div>
-          <div class="col-md-19">
-            <h3>{{name}}</h3>
+          <div class="home-title-3">
+            <a href="/do" class="btn btn-lg btn-default center-block">
+              <h1>Get the App</h1>
+            </a>
           </div>
-        </div>
-      {{/each}}
-
-      <div class="row marginTop50">
-        <div class="col-md-8 col-md-offset-2">
-          <a href="#care" class="btn btn-lg btn-warning btn-block text-dark" id="care-button">
-            <span class="learn-more-button">Why You Care</span>
-          </a>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container-fluid" id="care">
-  <section>
-    <div class="row">
-      <div class="col-md-4 col-md-offset-1">
-        <h2 class="text-center"><u>What are Stingrays?</u></h2>
-        {{> homeBullet bulletIcon="flaticon-cell18" bulletText="Portable devices that imitate cell phone towers"}}
-        {{> homeBullet bulletIcon="flaticon-spy1" bulletText="Used to monitor and spy on your phone"}}
-        {{> homeBullet bulletIcon="flaticon-email157" bulletText="Data from phones near the target also collected"}}
-      </div>
-      <div class="col-md-5 col-md-offset-1">
-        <h2 class="text-center"><u>Frequently Abused</u></h2>
-        {{> homeBullet bulletIcon="flaticon-scale8" bulletText="Local police use them without obtaining warrants"}}
-        {{> homeBullet bulletIcon="flaticon-protest" bulletText="Heightened use at protests like Black Lives Matter"}}
-        {{> homeBullet bulletIcon="flaticon-briefcase70" bulletText="The federal government is desperate to keep them secret"}}
-      </div>
-    </div>
-  </section>
-</div>
-
-<div class="container-fluid"><div class="col-md-10 col-md-offset-1"><hr/></div></div>
-
-<div class="container-fluid" id="care">
-  <section>
-    <div class="row">
-      <div class="col-md-6 col-md-offset-1">
-        <span class="protect-yourself">Protect yourself</span>
-        <div class="row marginTop25">
-          <div class="col-md-8">
-            <a href="#" class="pull-left">
-              <img src="googleplay.jpg">
-              <h2>Download for Android</h2>
-            </a>
-          </div>
-          <div class="col-md-4">
-            <a href="#" class="pull-right">
-              <img src="github.jpg">
-              <h2>Fork the project</h2>
-            </a>
-          </div>
-        </div>
-        <p class="marginTop50">We’ve created a modified version of an Android app to notify you when your device is likely connected to a Stingray and to plot those threats onto the map above. The map will help us understand patterns of Stingray use, including which neighborhoods and political events are targeted.</p>
-      </div>
-      <div class="col-md-4">
-        <img src="/app_screenshot.jpg" class="img-responsive img-center">
-      </div>
-    </div>
-  </section>
-</div>
 </template>
