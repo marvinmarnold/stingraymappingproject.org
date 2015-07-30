@@ -1,34 +1,41 @@
 @font-face {
   font-family: "Flaticon";
-  src: url("/flaticon/flaticon.eot");
-  src: url("/flaticon/flaticon.eot#iefix") format("embedded-opentype"),
-  url("/flaticon/flaticon.woff") format("woff"),
-  url("/flaticon/flaticon.ttf") format("truetype"),
-  url("/flaticon/flaticon.svg") format("svg");
+  src: url("flaticon/flaticon.eot");
+  src: url("flaticon/flaticon.eot#iefix") format("embedded-opentype"),
+  url("flaticon/flaticon.woff") format("woff"),
+  url("flaticon/flaticon.ttf") format("truetype"),
+  url("flaticon/flaticon.svg") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
 [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
   font-family: Flaticon;
-        font-size: 80px;
+        font-size: 2em;
 font-style: normal;
 margin-left: 20px;
-}.flaticon-briefcase70:before {
+}.flaticon-android3:before {
   content: "\e000";
 }
-.flaticon-cell18:before {
+.flaticon-briefcase70:before {
   content: "\e001";
 }
-.flaticon-email157:before {
+.flaticon-cell18:before {
   content: "\e002";
 }
-.flaticon-protest:before {
+.flaticon-email157:before {
   content: "\e003";
 }
-.flaticon-scale8:before {
+.flaticon-protest:before {
   content: "\e004";
 }
-.flaticon-spy1:before {
+.flaticon-scale8:before {
   content: "\e005";
+}
+.flaticon-spy1:before {
+  content: "\e006";
+}
+
+.center-icon {
+  text-align: center;
 }

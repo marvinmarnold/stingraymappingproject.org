@@ -56,7 +56,8 @@ hr {
 }
 
 p {
-  font-size: 1em;
+  font-size: 1.9em;
+  font-weight: 300;
 }
 
 h1 {
@@ -76,4 +77,13 @@ h3 {
 
 .img-center {
   margin: 0 auto;
+}
+
+li {
+  font-size: 1.7em;
+  font-weight: 300;
+}
+
+.end {
+  padding-bottom: 5em;
 }

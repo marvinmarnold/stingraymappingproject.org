@@ -1,29 +1,60 @@
 <template name="do">
-<div class="container-fluid" id="care">
-  <section>
+<div class="container">
+  <section id="do">
     <div class="row">
-      <div class="col-md-6 col-md-offset-1">
-        <span class="protect-yourself">Protect yourself</span>
-        <div class="row marginTop25">
-          <div class="col-md-8">
-            <a href="#" class="pull-left">
-              <img src="googleplay.jpg">
-              <h2>Download for Android</h2>
-            </a>
-          </div>
-          <div class="col-md-4">
-            <a href="#" class="pull-right">
-              <img src="github.jpg">
-              <h2>Fork the project</h2>
-            </a>
-          </div>
-        </div>
-        <p class="marginTop50">We’ve created a modified version of an Android app to notify you when your device is likely connected to a Stingray and to plot those threats onto the map above. The map will help us understand patterns of Stingray use, including which neighborhoods and political events are targeted.</p>
+      <div class="col-md-8">
+        <h2>Download the App</h2>
+        <p>We’ve created a modified version of an <a href="https://github.com/SecUpwN/Android-IMSI-Catcher-Detector">existing Android app</a> to notify you when your device is likely connected to a Stingray and to plot those threats onto the map on this site. We won't collect any information that would identify you or your phone, only a Stingray threat level, time stamp, and GPS coordinates. This data will help us understand patterns of Stingray use, including which neighborhoods and political events are targeted.</p>
       </div>
       <div class="col-md-4">
-        <img src="/app_screenshot.jpg" class="img-responsive img-center">
+        <a href="#">
+          <img src="/app_screenshot.jpg" class="img-responsive img-center">
+          <i class="flaticon-android3 center-icon"></i><span class="p2 text-center">&nbsp;&nbsp;&nbsp;&nbsp;Download for Android</span>
+        </a>
       </div>
     </div>
   </section>
+
+  <hr/>
+
+  <section>
+    <h2>Contribute to Development</h2>
+    <p>This project runs on three different open source projects. If you can code, please fork the project and send us some pull requests.</p>
+
+    <div class="row">
+      <div class="col-md-4">
+        <h3>App</h3>
+        <ul>
+          <li>Built with Android</li>
+          <li>Forked from an <a href="https://github.com/SecUpwN/Android-IMSI-Catcher-Detector">existing Android app</a></li>
+          <li>Get the source <a href="https://github.com/marvinmarnold/Android-IMSI-Catcher-Detector">here</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h3>Website</h3>
+         <ul>
+          <li>Built with Meteor</li>
+          <li>Get the source <a href="https://github.com/marvinmarnold/imsi-mapper">here</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h3>Databse Server</h3>
+        <ul>
+          <li>Built with Ruby on Rails</li>
+          <li>Get the source <a href="https://github.com/marvinmarnold/stingraymappingproject.org">here</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr/>
+
+  <section>
+    <h2>Contact the Team</h2>
+    <p>Feel free to contact <a href="mailto:mary.ellen.stitt@gmail.com">Mary Ellen Stitt</a> or <a href="mailto:marvin@unplugged.im">Marvin Arnold</a> about this site. Mary Ellen is a student, Marvin is a programmer, and we both live in New Orleans. We want to make this site as useful as possible, so we welcome all questions and feedback!</p>
+  </section>
 </div>
+
+
+<div class="end"></div>
 </template>
