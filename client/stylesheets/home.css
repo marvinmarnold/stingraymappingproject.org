@@ -12,7 +12,7 @@
 }
 
 .map-info {
-  /*background-color: #EAEAEA;*/
+  background-color: #EAEAEA;
 }
 
 .map-div {
@@ -20,20 +20,16 @@
    margin: 0 !important;
 }
 
-.home-bullet {
-  font-size: 35px;
-  background-color: #EAEAEA;
-  padding: 10px;
-  border-radius: 25px;
-  border: 2px solid;
+.protect-yourself {
+  font-size: 1em;
 }
 
-.protect-yourself {
-  font-size: 40px;
+.home-title-1 {
+  padding-top: 5%;
 }
 
 .home-title-2 {
-  padding-top: 65%;
+  padding-top: 25%;
 }
 
 .home-title-3 {
