@@ -2,54 +2,52 @@ Meteor.startup(function(){
   Mapbox.load({plugins: ['minimap', 'markercluster']});
 });
 
+var map;
+var markers;
 Template.stingrayMap.rendered = function () {
-    this.autorun(function () {
+    this.autorun(function (computation) {
       if (Mapbox.loaded()) {
+
         L.mapbox.accessToken = Meteor.settings.public.mapboxPublicToken;
-        var map = L.mapbox.map('map', 'mapbox.streets').setView([38.731407,  -96.386617], 4);
-        var markers = new L.MarkerClusterGroup();
+        map = L.mapbox.map('map', 'mapbox.streets').setView([38.731407,  -96.386617], 4);
+        markers = new L.MarkerClusterGroup();
 
-        // Call external server and get some readings
-        return Meteor.call("getStingrayReadings", function(error, results) {
-          if(error) {
-            // TODO provide some type of error message
-            return;
-          }
-
-          // Put each item on the map
-          var _stingrayReadings = results.data;
-          var length = _stingrayReadings.length;
-
-          for (var i = 0; i < length; i++) {
-            var _stingrayReading = _stingrayReadings[i];
-
-            // Create an object in the local DB
-            // currently, this only adds complexity
-            // in the future, this will make it easier to get reactivity
-            var stingrayReadingId = StingrayReadings.insert({
-              color: colorForReading(_stingrayReading),
-              size: sizeForReading(_stingrayReading),
-              symbol: symbolForReading(_stingrayReading),
-              title: locationForReading(_stingrayReading),
-              description: timeForReading(_stingrayReading),
-              longitude: longitudeForReading(_stingrayReading),
-              latitude: latitudeForReading(_stingrayReading)
-            });
-
-            addReadingToMarkers(markers, StingrayReadings.findOne(stingrayReadingId));
-          }
-          map.addLayer(markers);
-        });
+        if(!areStingrayReadingsLoaded()) {
+          populateStingrayReadings();
+        } else {
+          displayStingrayReadings();
+        }
+        computation.stop();
       }
     });
 };
 
-var addReadingToMarkers = function(markers, stingrayReading) {
-  var marker = L.marker(new L.LatLng(stingrayReading.latitude, stingrayReading.longitude), {
-      icon: L.mapbox.marker.icon({'marker-symbol': stingrayReading.symbol, 'marker-color': stingrayReading.color}),
-      title: stingrayReading.title
+var areStingrayReadingsLoaded = function () {
+  return !(StingrayReadings.find().count() === 0);
+}
+
+var displayStingrayReadings = function () {
+  stingrayReadings = StingrayReadings.find();
+
+  stingrayReadings.forEach(function(stingrayReading) {
+    addReadingToMarkers(stingrayReading);
   });
-  marker.bindPopup(stingrayReading.title);
+
+  map.addLayer(markers);
+}
+
+var addReadingToMarkers = function(stingrayReading) {
+  var marker = L.marker(new L.LatLng(stingrayReading.latitude, stingrayReading.longitude), {
+      icon: L.mapbox.marker.icon({
+        'marker-symbol': stingrayReading.symbol,
+        'marker-color': stingrayReading.color,
+        'marker-size': stingrayReading.size
+      }),
+      title: stingrayReading.title,
+      description: stingrayReading.description
+  });
+
+  marker.bindPopup("<p><strong>" + stingrayReading.title + '<\/strong><\/p><p class=\"muted\">' + stingrayReading.description + '<\/p>');
   markers.addLayer(marker);
 }
 
@@ -70,7 +68,8 @@ var timeForReading = function(_stingrayReading) {
 }
 
 var locationForReading = function(_stingrayReading) {
-  return _stingrayReading.location;
+  // return _stingrayReading.location;
+  return "location";
 }
 
 var longitudeForReading = function(_stingrayReading) {
@@ -81,28 +80,34 @@ var latitudeForReading = function(_stingrayReading) {
   return _stingrayReading.lat;
 }
 
-var addFeatureToMap = function(map, stingrayReading) {
-  L.mapbox.featureLayer({
-      // this feature is in the GeoJSON format: see geojson.org
-      // for the full specification
-      type: 'Feature',
-      geometry: {
-          type: 'Point',
-          // coordinates here are in longitude, latitude order because
-          // x, y is the standard for GeoJSON and many formats
-          coordinates: [
-            stingrayReading.longitude,
-            stingrayReading.latitude,
-          ]
-      },
-      properties: {
-          title: stingrayReading.title,
-          description: stingrayReading.description,
-          // one can customize markers by adding simplestyle properties
-          // https://www.mapbox.com/guides/an-open-platform/#simplestyle
-          'marker-size': stingrayReading.size,
-          'marker-color': stingrayReading.color,
-          'marker-symbol': stingrayReading.symbol
-      }
-    }).addTo(map);
+var populateStingrayReadings = function () {
+  // Call external server and get some readings
+  Meteor.call("getStingrayReadings", function(error, results) {
+    if(error) {
+      // TODO provide some type of error message
+      return;
+    }
+
+    // Put each item on the map
+    var _stingrayReadings = results.data;
+    var length = _stingrayReadings.length;
+
+    for (var i = 0; i < length; i++) {
+      var _stingrayReading = _stingrayReadings[i];
+
+      // Create an object in the local DB
+      // currently, this only adds complexity
+      // in the future, this will make it easier to get reactivity
+      StingrayReadings.insert({
+        color: colorForReading(_stingrayReading),
+        size: sizeForReading(_stingrayReading),
+        symbol: symbolForReading(_stingrayReading),
+        title: locationForReading(_stingrayReading),
+        description: timeForReading(_stingrayReading),
+        longitude: longitudeForReading(_stingrayReading),
+        latitude: latitudeForReading(_stingrayReading)
+      });
+    }
+    displayStingrayReadings();
+  });
 }
