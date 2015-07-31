@@ -5,6 +5,6 @@ Meteor.methods({
   }
 });
 
-apiEndpointFor = function(resourcePath) {
+var apiEndpointFor = function(resourcePath) {
   return Meteor.settings.public.apiEndpoint + resourcePath;
 }

@@ -68,8 +68,7 @@ var timeForReading = function(_stingrayReading) {
 }
 
 var locationForReading = function(_stingrayReading) {
-  // return _stingrayReading.location;
-  return "location";
+  return _stingrayReading.location;
 }
 
 var longitudeForReading = function(_stingrayReading) {
@@ -98,7 +97,7 @@ var populateStingrayReadings = function () {
       // Create an object in the local DB
       // currently, this only adds complexity
       // in the future, this will make it easier to get reactivity
-      StingrayReadings.insert({
+      var id = StingrayReadings.insert({
         color: colorForReading(_stingrayReading),
         size: sizeForReading(_stingrayReading),
         symbol: symbolForReading(_stingrayReading),
@@ -107,7 +106,14 @@ var populateStingrayReadings = function () {
         longitude: longitudeForReading(_stingrayReading),
         latitude: latitudeForReading(_stingrayReading)
       });
+      displayStingrayReading(id);
+      map.addLayer(markers);
     }
-    displayStingrayReadings();
+
   });
+}
+
+var displayStingrayReading = function (stingrayReadingId) {
+  stingrayReading = StingrayReadings.findOne(stingrayReadingId);
+  addReadingToMarkers(stingrayReading);
 }
