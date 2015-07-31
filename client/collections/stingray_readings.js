@@ -1,0 +1,1 @@
+StingrayReadings = new Mongo.Collection(null);
