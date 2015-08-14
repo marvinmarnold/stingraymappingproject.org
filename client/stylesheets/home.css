@@ -1,37 +1,77 @@
-.learn-more-button {
-  font-size: 50px;
+#home {
+  text-align: center;
 }
 
-.text-dark {
-  color: black;
+#home > p {
+  font-size: 1.5em;
 }
 
-#map {
-  height: 100%;
-  min-height: 100%
+#home-01-police {
+  background-image: url("/home/police_listen.jpg");
+  background-size:   cover;                      /* <------ */
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: white;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-.map-info {
-  background-color: #EAEAEA;
+.home-01-police-title {
+  padding-top: 3em;
+  font-size: 3em;
 }
 
-.map-div {
-   padding: 0 !important;
-   margin: 0 !important;
+.home-01-police-description {
+  margin: 6em 0;
 }
 
-.protect-yourself {
-  font-size: 1em;
+#home-01-police {
+  background-image: url("/home/police_listen.jpg");
+  background-size:   cover;                      /* <------ */
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: white;
 }
 
-.home-title-1 {
-  padding-top: 5%;
+#home-app {
+  margin: 5em 0;
 }
 
-.home-title-2 {
-  padding-top: 25%;
+#home h3 {
+  font-size: 2.5em;
 }
 
-.home-title-3 {
-  padding-top: 5%;
+#home-03-explanation1 {
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 2.9em;
+  background-color: #AED3F6;
+}
+
+#home-03-explanation2 {
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 2.9em;
+  background-color: #1159B1;
+}
+
+#home-04-care {
+  margin: 5em 0;
+}
+
+#home-04-care ul {
+  list-style-type: none;
+  font-size: 1.4em;
+}
+
+.flag {
+  height: 6em;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.flag-row {
+  margin-top: 0.5em;
+}
+
+#home-flags{
+  margin: 3em;
 }

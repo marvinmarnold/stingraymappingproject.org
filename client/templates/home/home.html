@@ -1,31 +1,82 @@
 <template name="home">
-<div class="container-fluid fullHeight">
-  <div class="row fullHeight">
-    <div class="col-md-7 map-div fullHeight">
-      {{> stingrayMap}}
+<div id="home">
+<div id="home-01-police">
+  <div class="container-fluid home">
+    <div class="home-01-police-title">
+      <p>
+        For nearly 10 years
+      </p>
     </div>
-    <div class="col-md-5 map-info fullHeight">
-      <div class="row fullHeight">
-        <div class="col-lg-10 col-lg-offset-1 fullHeight col-md-12">
-          <div class="home-title-1">
-            <h1 class="text-center">
-              Stingray surveillance lets police spy on our cell phones
-            </h1>
-          </div>
-          <div class="home-title-2">
-            <h3 class="text-center">
-              Protect yourself:
-            </h3>
-          </div>
-          <div class="home-title-3">
-            <a href="/do" class="btn btn-lg btn-info center-block">
-              <h2>Get the App</h2>
-            </a>
-          </div>
-        </div>
-      </div>
+    <div class="home-01-police-description">
+      <p>
+        <strong>police have been listening</strong> to our calls and reading our text messages
+      </p>
+      <p>
+        with <strong>little oversight</strong> and even <strong>less public scrutiny</strong>
+      </p>
     </div>
   </div>
 </div>
+<div id="home-app">
+  <div class="container-fluid">
+    {{> homeApp}}
+  </div>
+</div>
+<div id="home-03-explanation1">
+  <div class="container-fluid">
+    <p>
+      Stingrays are mobile devices that simulate cell phone towers
+    </p>
+  </div>
+</div>
+<div id="home-03-explanation2">
+  <div class="container-fluid">
+    <p>
+      Forcing nearby phones to connect to them
+    </p>
+  </div>
+</div>
+<div id="home-04-care">
+  <div class="container-fluid">
+    <p>
+      Stingrays can capture information from all of the cell phones within range, including:
+    </p>
+    <ul>
+      <li>user identity</li>
+      <li>location</li>
+      <li>call</li>
+      <li>text content</li>
+    </ul>
+    <p>
+      But non-disclosure agreements between local police and the FBI have kept the device secret from the public
+    </p>
+    <p>
+    and often even from the courts
+    </p>
 
+  </div>
+</div>
+<div id="home-03-explanation1">
+  <div class="container-fluid">
+    <p>
+      Stingrays have been used to spy on many <a href="http://www.baltimoresun.com/news/maryland/crime/blog/bs-md-ci-stingray-new-disclosures-20150420-story.html">thousands of people</a>
+    </p>
+  </div>
+</div>
+<div id="home-03-explanation2">
+  <div class="container-fluid">
+    <p>
+      Often targeting individuals solely for First Amendment activity
+    </p>
+  </div>
+</div>
+<div id="home-flags">
+  {{> homeFlags}}
+</div>
+<div>
+  <h2>
+    {App Name}
+  </h2>
+</div>
+</div>
 </template>
