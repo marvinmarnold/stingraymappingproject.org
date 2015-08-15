@@ -1,0 +1,14 @@
+#map {
+  height: 50em;
+  min-height: 50em;
+  margin-top: 5em;
+}
+
+.map-info {
+  background-color: #EAEAEA;
+}
+
+.map-div {
+   padding: 0 !important;
+   margin: 0 !important;
+}

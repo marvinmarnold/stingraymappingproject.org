@@ -16,16 +16,16 @@
   margin: 0 !important;
 }
 
-.home-01-police-title {
+.home-intro-title {
   padding-top: 3em;
   font-size: 3em;
 }
 
-.home-01-police-description {
+.home-intro-description {
   margin: 6em 0;
 }
 
-#home-01-police {
+#home-intro {
   background-image: url("/home/police_listen.jpg");
   background-size:   cover;                      /* <------ */
   background-repeat: no-repeat;
@@ -53,13 +53,8 @@
   background-color: #1159B1;
 }
 
-#home-04-care {
+#home-care {
   margin: 5em 0;
-}
-
-#home-04-care ul {
-  list-style-type: none;
-  font-size: 1.4em;
 }
 
 .flag {
@@ -74,4 +69,9 @@
 
 #home-flags{
   margin: 3em;
+}
+
+.homeCare-problems {
+  font-size: 3em;
+  margin: 2em 0;
 }

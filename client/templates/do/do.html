@@ -4,8 +4,9 @@
     <div class="row">
       <div class="col-md-8">
         <h2>Download the App</h2>
-        <p>We’ve created a modified version of an existing Android app to notify you when your device is likely connected to a Stingray and to plot those threats onto the map on this site. We won't collect any information that would identify you or your phone, only a Stingray threat level, time stamp, and GPS coordinates. This data will help us understand patterns of Stingray use, including which neighborhoods and political events are targeted.</p>
-        <br/>
+        <p>This app will warn you when your device is likely connected to a Stingray or when a Stingray has been detected nearby. You will then be able to put your phone into airplane mode to protect your information.</p>
+        <p>XXX will also map Stingray threat detections on this site in order to contribute to public understanding of how the technology is used and which neighborhoods or political events it targets.</p>
+        <p>The app will record only the time and place of the Stingray threat, never any information that would identify you or your phone. Threat location will also be blurred slightly and recorded on the map with an 8-hour time delay for additional protection of user anonymity.</p>
         <p><i>This project came into being because of the incredible work of the <a href="https://github.com/SecUpwN/Android-IMSI-Catcher-Detector">AIMSICD detection project</a>, which created and continues to refine the Stingray detection technology on which the app relies.</i></p>
       </div>
       <div class="col-md-4">
@@ -20,75 +21,25 @@
   <hr/>
 
   <section>
+    {{> doContributeCode}}
+  </section>
+
+  <hr/>
+
+  <section>
+    <h2>Privacy</h2>
+    <p>Stingrays are just one of many tools that can be used to access your private and communications and search information. Click here to learn about ways to protect your privacy.</p>
+  </section>
+
+  <hr/>
+
+  <section>
     <h2>Contact the Team</h2>
     <p>Feel free to contact <a href="mailto:marvin@unplugged.im">Marvin Arnold</a> or <a href="mailto:mary.ellen.stitt@gmail.com">Mary Ellen Stitt</a> about this site. Mary Ellen is a student, Marvin is a programmer, and we both live in New Orleans. We want to make this site as useful as possible, so we welcome all questions and feedback!</p>
   </section>
 
-   <hr/>
 
-  <section>
-    <h2>Contribute Code</h2>
-    <p>This project runs on three different open source projects. If you can code, please fork the project and send us some pull requests.</p>
 
-    <div class="row development-details">
-      <div class="col-md-11 col-md-offset-1">
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-          <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingOne">
-              <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  <h4>App Details</h4>
-                </a>
-              </h4>
-            </div>
-            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-              <div class="panel-body">
-                <ul>
-                  <li>Built with Android</li>
-                  <li>Forked from an <a href="https://github.com/SecUpwN/Android-IMSI-Catcher-Detector">existing Android app</a></li>
-                  <li>Get our source <a href="https://github.com/marvinmarnold/Android-IMSI-Catcher-Detector">here</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingTwo">
-              <h4 class="panel-title">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  <h4>Website Details</h4>
-                </a>
-              </h4>
-            </div>
-            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-              <div class="panel-body">
-                <ul>
-                  <li>Built with Meteor</li>
-                  <li>Get the source <a href="https://github.com/marvinmarnold/imsi-mapper">here</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingThree">
-              <h4 class="panel-title">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  <h4>Database Server Details</h4>
-                </a>
-              </h4>
-            </div>
-            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-              <div class="panel-body">
-                <ul>
-                  <li>Built with Ruby on Rails</li>
-                  <li>Get the source <a href="https://github.com/marvinmarnold/stingraymappingproject.org">here</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 </div>
 
 <div class="end"></div>
