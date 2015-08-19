@@ -75,3 +75,35 @@
   font-size: 3em;
   margin: 2em 0;
 }
+
+.home-nda {
+  background-image: url("/home/nda.jpg");
+  background-size:   cover;                      /* <------ */
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: white;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 20em;
+}
+
+#home-nda-title {
+  opacity: 1;
+  color: white;
+}
+
+.home-nda-text {
+  margin: 5em 0;
+  opacity: 0.9;
+  background-color: #1159B1;
+  border-radius: 1.5em;
+  padding: 1em;
+}
+
+.home-nda-text a {
+  color: #CFF5FF;
+}
+
+#home-nda-description {
+  margin-top: 2em;
+}
