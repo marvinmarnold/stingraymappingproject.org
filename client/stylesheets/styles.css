@@ -107,3 +107,11 @@ h5 {
   font-size: 3em;
   font-weight: 300;
 }
+
+.not-found-title {
+  margin: 5em 0;
+}
+
+.not-found-description {
+  margin-top: 30em;
+}

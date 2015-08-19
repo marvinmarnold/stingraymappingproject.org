@@ -53,6 +53,10 @@
   background-color: #1159B1;
 }
 
+.home-03-explanation2 a {
+  color: #CFF5FF;
+}
+
 #home-care {
   margin: 5em 0;
 }
@@ -114,4 +118,8 @@
 
 #home-nda-description {
   margin-top: 2em;
+}
+
+#home-end {
+  margin-bottom: 5em;
 }
