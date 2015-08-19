@@ -26,7 +26,7 @@
 }
 
 #home-intro {
-  background-image: url("/home/police_listen.jpg");
+  background-image: url("/home/cameraAndManBW.jpg");
   background-size:   cover;                      /* <------ */
   background-repeat: no-repeat;
   background-position: center center;
@@ -71,9 +71,17 @@
   margin: 3em;
 }
 
-.homeCare-problems {
-  font-size: 3em;
-  margin: 2em 0;
+.home-care-problems {
+  margin: 7em 0;
+}
+
+.home-care-icons {
+  font-size: 2.5em;
+  margin-top: 1.5em;
+}
+
+#home-care-title {
+
 }
 
 .home-nda {
@@ -93,7 +101,7 @@
 }
 
 .home-nda-text {
-  margin: 5em 0;
+  margin: 10em 0;
   opacity: 0.9;
   background-color: #1159B1;
   border-radius: 1.5em;
