@@ -123,3 +123,22 @@
 #home-end {
   margin-bottom: 5em;
 }
+
+.home-first-amendment {
+  background-image: url("/home/firstAmendment.jpg");
+  background-size:   cover;                      /* <------ */
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: white;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 40em;
+}
+
+.home-first-amendment-title {
+  margin: 4em 0;
+}
+
+.home-first-amendment-description {
+
+}

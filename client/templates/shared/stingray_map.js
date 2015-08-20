@@ -165,6 +165,7 @@ var populateStingrayReadings = function () {
         longitude: longitudeForReading(_stingrayReading),
         latitude: latitudeForReading(_stingrayReading)
       });
+
       displayStingrayReading(id);
       map.addLayer(markers);
     }
@@ -176,4 +177,47 @@ var populateStingrayReadings = function () {
 var displayStingrayReading = function (stingrayReadingId) {
   stingrayReading = StingrayReadings.findOne(stingrayReadingId);
   addReadingToMarkers(stingrayReading);
+}
+
+function normalize (grid) {
+    grid.features = grid.features.filter(function(cell){
+        var year = 1955;
+        while(year <= 2013){
+            if (cell.properties[year.toString()] > 0) return true;
+            year++;
+        }
+    });
+
+    var breaks = {};
+    var year = 1955;
+    while(year <= 2013){
+        var filtered = turf.featurecollection([]);
+        filtered.features = grid.features.filter(function(cell){
+            if (cell.properties[year.toString()] > 0) return true;
+        });
+
+        breaks[year.toString()] = turf.quantile(filtered, year.toString(), [20,40,60,70,80,90,95,99]);
+        year++;
+    }
+
+    year = 1955;
+    while(year <= 2013){
+        var translation = breaks[year.toString()];
+        var translations = [
+            [0, translation[0], 1],
+            [translation[1], translation[2], 2],
+            [translation[2], translation[3], 3],
+            [translation[3], translation[4], 4],
+            [translation[4], translation[5], 5],
+            [translation[5], translation[6], 6],
+            [translation[6], translation[7], 7],
+            [translation[7], Infinity, 8]
+        ];
+        grid = turf.reclass(grid, year.toString(), year.toString()+'_class', translations);
+        grid.features.forEach(function(cell){
+            if(!cell.properties[year.toString()+'_class']) cell.properties[year.toString()+'_class'] = 0;
+        })
+        year++;
+    }
+    return grid;
 }
