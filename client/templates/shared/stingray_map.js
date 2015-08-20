@@ -14,10 +14,13 @@ Template.stingrayMap.rendered = function () {
         // Set the Mapbox access token
         L.mapbox.accessToken = Meteor.settings.public.mapboxPublicToken;
 
+        // Instantiate minimap
+        var minimap = new L.Control.MiniMap(L.mapbox.tileLayer('mapbox.dark'));
+
         // Center the map at some hardcoded arbitrary point towards the middle of the USA
         map = L.mapbox.map('map', 'mapbox.light').setView([38.731407,  -96.386617], 4).on('ready', function() {
-            new L.Control.MiniMap(L.mapbox.tileLayer('mapbox.dark'))
-                .addTo(map);
+          // Add minimap to primary map
+          minimap.addTo(map);
         });
 
         // Add dynamic scale indicator to map
@@ -26,8 +29,11 @@ Template.stingrayMap.rendered = function () {
         // Add HTML5 locator
         L.control.locate().addTo(map);
 
+        // Add legend to map
+        map.legendControl.addLegend(document.getElementById('legend').innerHTML);
+
         heat = L.heatLayer([], {
-          maxZoom: 14,
+          maxZoom: 11,
           radius: 40,
           blur: 1,
           gradient: {
@@ -39,7 +45,7 @@ Template.stingrayMap.rendered = function () {
         }).addTo(map);
 
         // Set `markers` to a MarkerClusterGroup
-        // markers = new L.MarkerClusterGroup();
+        markers = new L.MarkerClusterGroup();
 
         // Load cached Stingray available
         if(!areStingrayReadingsLoaded()) {
@@ -70,28 +76,30 @@ var displayStingrayReadings = function () {
     addReadingToMap(stingrayReading);
   });
 
-  // map.addLayer(markers);
+  map.addLayer(markers);
+  // map.redraw();
 }
 
 // Place  marker at (latitude, Longitude).
 // Give the marker a certain symbol, color, and size based on its data and add styling to popup.
 var addReadingToMap = function(stingrayReading) {
   stingrayLatLng = new L.LatLng(stingrayReading.latitude, stingrayReading.longitude);
-  // var marker = L.marker(stingrayLatLng, {
-  //     icon: L.mapbox.marker.icon({
-  //       'marker-symbol': stingrayReading.symbol,
-  //       'marker-color': stingrayReading.color,
-  //       'marker-size': stingrayReading.size
-  //     }),
-  //     title: stingrayReading.title,
-  //     description: stingrayReading.description
-  // });
+  var marker = L.marker(stingrayLatLng, {
+      icon: L.mapbox.marker.icon({
+        'marker-symbol': stingrayReading.symbol,
+        'marker-color': stingrayReading.color,
+        'marker-size': stingrayReading.size
+      }),
+      title: stingrayReading.title,
+      description: stingrayReading.description
+  });
 
-  // marker.bindPopup("<p><strong>" + stingrayReading.title + '<\/strong><\/p><p class=\"muted\">' + stingrayReading.description + '<\/p>');
-  // markers.addLayer(marker);
-  // map.fitBounds(markers.getBounds());
+  marker.bindPopup("<p><strong>" + stingrayReading.title + '<\/strong><\/p><p class=\"muted\">' + stingrayReading.description + '<\/p>');
+  markers.addLayer(marker);
+
+  map.fitBounds(markers.getBounds());
   heat.addLatLng(stingrayLatLng);
-  map.redraw();
+  // map.redraw();
 }
 
 // All readings have the same color
