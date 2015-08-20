@@ -1,6 +1,7 @@
 Meteor.startup(function(){
   // Enable Mapbox plugins from https://www.mapbox.com/mapbox.js/plugins/ supported
-  Mapbox.load({plugins: ['minimap', 'markercluster', 'heat']});
+  // https://github.com/pauloborges/meteor-mapbox
+  Mapbox.load({plugins: ['minimap', 'markercluster', 'heat', 'locate']});
 });
 
 var map;
@@ -14,13 +15,31 @@ Template.stingrayMap.rendered = function () {
         L.mapbox.accessToken = Meteor.settings.public.mapboxPublicToken;
 
         // Center the map at some hardcoded arbitrary point towards the middle of the USA
-        map = L.mapbox.map('map', 'mapbox.light').setView([38.731407,  -96.386617], 4);
+        map = L.mapbox.map('map', 'mapbox.light').setView([38.731407,  -96.386617], 4).on('ready', function() {
+            new L.Control.MiniMap(L.mapbox.tileLayer('mapbox.dark'))
+                .addTo(map);
+        });
 
+        // Add dynamic scale indicator to map
+        L.control.scale().addTo(map);
 
-        heat = L.heatLayer([], {maxZoom: 12}).addTo(map);
+        // Add HTML5 locator
+        L.control.locate().addTo(map);
+
+        heat = L.heatLayer([], {
+          maxZoom: 14,
+          radius: 40,
+          blur: 1,
+          gradient: {
+            0.3: 'blue',
+            0.55: 'lime',
+            0.75: 'orange',
+            1: 'red'
+          }
+        }).addTo(map);
 
         // Set `markers` to a MarkerClusterGroup
-        markers = new L.MarkerClusterGroup();
+        // markers = new L.MarkerClusterGroup();
 
         // Load cached Stingray available
         if(!areStingrayReadingsLoaded()) {
@@ -35,25 +54,6 @@ Template.stingrayMap.rendered = function () {
     });
 };
 
-// L.mapbox.accessToken = '<your access token here>';
-// var map = L.mapbox.map('map', 'mapbox.light'),
-//     // The maxZoom states which zoom the markers are fully opaque at -
-//     // in this case, there are few markers far apart, so we set it low.
-//     heat = L.heatLayer([], { maxZoom: 12 }).addTo(map);
-
-// We're just using a featureLayer to pull marker data from Mapbox -
-// this is not added to the map.
-// var layer = L.mapbox.featureLayer('examples.map-zr0njcqy').on('ready', function() {
-//     // Zoom the map to the bounds of the markers.
-//     map.fitBounds(layer.getBounds());
-//     // Add each marker point to the heatmap.
-//     layer.eachLayer(function(l) {
-//         heat.addLatLng(l.getLatLng());
-//     });
-// });
-
-
-
 // Readings are cached in a client-side only collection of StingrayReadings
 // TODO: Investigate how long those items stay cached.
 // TODO: Ultimately, sync that caching time with the API call rate
@@ -67,29 +67,31 @@ var displayStingrayReadings = function () {
   stingrayReadings = StingrayReadings.find();
 
   stingrayReadings.forEach(function(stingrayReading) {
-    addReadingToMarkers(stingrayReading);
+    addReadingToMap(stingrayReading);
   });
 
-  map.addLayer(markers);
+  // map.addLayer(markers);
 }
 
 // Place  marker at (latitude, Longitude).
 // Give the marker a certain symbol, color, and size based on its data and add styling to popup.
-var addReadingToMarkers = function(stingrayReading) {
+var addReadingToMap = function(stingrayReading) {
   stingrayLatLng = new L.LatLng(stingrayReading.latitude, stingrayReading.longitude);
-  var marker = L.marker(stingrayLatLng, {
-      icon: L.mapbox.marker.icon({
-        'marker-symbol': stingrayReading.symbol,
-        'marker-color': stingrayReading.color,
-        'marker-size': stingrayReading.size
-      }),
-      title: stingrayReading.title,
-      description: stingrayReading.description
-  });
+  // var marker = L.marker(stingrayLatLng, {
+  //     icon: L.mapbox.marker.icon({
+  //       'marker-symbol': stingrayReading.symbol,
+  //       'marker-color': stingrayReading.color,
+  //       'marker-size': stingrayReading.size
+  //     }),
+  //     title: stingrayReading.title,
+  //     description: stingrayReading.description
+  // });
 
-  marker.bindPopup("<p><strong>" + stingrayReading.title + '<\/strong><\/p><p class=\"muted\">' + stingrayReading.description + '<\/p>');
-  markers.addLayer(marker);
+  // marker.bindPopup("<p><strong>" + stingrayReading.title + '<\/strong><\/p><p class=\"muted\">' + stingrayReading.description + '<\/p>');
+  // markers.addLayer(marker);
+  // map.fitBounds(markers.getBounds());
   heat.addLatLng(stingrayLatLng);
+  map.redraw();
 }
 
 // All readings have the same color
