@@ -13,7 +13,10 @@ Template.stingrayMap.rendered = function () {
         L.mapbox.accessToken = Meteor.settings.public.mapboxPublicToken;
 
         // Center the map at some hardcoded arbitrary point towards the middle of the USA
-        map = L.mapbox.map('map', 'mapbox.streets').setView([38.731407,  -96.386617], 4);
+        map = L.mapbox.map('map', 'mapbox.light').setView([38.731407,  -96.386617], 4);
+
+
+        heat = L.heatLayer([], {maxZoom: 12}).addTo(map);
 
         // Set `markers` to a MarkerClusterGroup
         markers = new L.MarkerClusterGroup();
@@ -30,6 +33,25 @@ Template.stingrayMap.rendered = function () {
       }
     });
 };
+
+// L.mapbox.accessToken = '<your access token here>';
+// var map = L.mapbox.map('map', 'mapbox.light'),
+//     // The maxZoom states which zoom the markers are fully opaque at -
+//     // in this case, there are few markers far apart, so we set it low.
+//     heat = L.heatLayer([], { maxZoom: 12 }).addTo(map);
+
+// We're just using a featureLayer to pull marker data from Mapbox -
+// this is not added to the map.
+// var layer = L.mapbox.featureLayer('examples.map-zr0njcqy').on('ready', function() {
+//     // Zoom the map to the bounds of the markers.
+//     map.fitBounds(layer.getBounds());
+//     // Add each marker point to the heatmap.
+//     layer.eachLayer(function(l) {
+//         heat.addLatLng(l.getLatLng());
+//     });
+// });
+
+
 
 // Readings are cached in a client-side only collection of StingrayReadings
 // TODO: Investigate how long those items stay cached.
