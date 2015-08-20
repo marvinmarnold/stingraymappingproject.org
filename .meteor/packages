@@ -13,3 +13,4 @@ nemo64:bootstrap
 less
 http
 momentjs:moment
+mrt:chartjs
