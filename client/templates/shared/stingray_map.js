@@ -5,6 +5,7 @@ Meteor.startup(function(){
 
 var map;
 var markers;
+var heat;
 Template.stingrayMap.rendered = function () {
     this.autorun(function (computation) {
       if (Mapbox.loaded()) {
@@ -75,7 +76,8 @@ var displayStingrayReadings = function () {
 // Place  marker at (latitude, Longitude).
 // Give the marker a certain symbol, color, and size based on its data and add styling to popup.
 var addReadingToMarkers = function(stingrayReading) {
-  var marker = L.marker(new L.LatLng(stingrayReading.latitude, stingrayReading.longitude), {
+  stingrayLatLng = new L.LatLng(stingrayReading.latitude, stingrayReading.longitude);
+  var marker = L.marker(stingrayLatLng, {
       icon: L.mapbox.marker.icon({
         'marker-symbol': stingrayReading.symbol,
         'marker-color': stingrayReading.color,
@@ -87,6 +89,7 @@ var addReadingToMarkers = function(stingrayReading) {
 
   marker.bindPopup("<p><strong>" + stingrayReading.title + '<\/strong><\/p><p class=\"muted\">' + stingrayReading.description + '<\/p>');
   markers.addLayer(marker);
+  heat.addLatLng(stingrayLatLng);
 }
 
 // All readings have the same color
