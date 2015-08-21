@@ -62,17 +62,36 @@
 }
 
 .flag {
-  height: 6em;
-  margin: 0 auto;
   display: inline-block;
+  width: 100%;
 }
 
-.flag-row {
-  margin-top: 0.5em;
+.flag-col {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.flag-new {
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  padding-left: 0 !important;
+}
+
+.flag-last {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  padding-left: 0 !important;
 }
 
 #home-flags{
-  margin: 3em;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .home-care-problems {
@@ -121,7 +140,7 @@
 }
 
 #home-end {
-  margin-bottom: 5em;
+  margin: 15em 0;
 }
 
 .home-first-amendment {
@@ -132,13 +151,17 @@
   color: white;
   padding: 0 !important;
   margin: 0 !important;
-  min-height: 40em;
+  min-height: 20em;
 }
 
 .home-first-amendment-title {
-  margin: 4em 0;
+  margin: 3em 0;
 }
 
 .home-first-amendment-description {
 
+}
+
+.contact-bullet {
+  margin-right: 1em;
 }
