@@ -1,7 +1,7 @@
 var map;
 var markers;
 var heat;
-Template.stingrayMap.rendered = function () {
+Template.recentStingrayReadings.rendered = function () {
     this.autorun(function (computation) {
       if (Mapbox.loaded()) {
         setMapboxToken();
@@ -28,10 +28,10 @@ Template.stingrayMap.rendered = function () {
           radius: 30,
           blur: 1,
           gradient: {
-            0.3: 'blue',
-            0.55: 'lime',
-            0.75: 'orange',
-            1: 'red'
+            0.3: '#0DE5F8',
+            0.55: '#5DF581',
+            0.75: '#FBBE2C',
+            1: '#F50909'
           }
         }).addTo(map);
 

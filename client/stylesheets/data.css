@@ -30,3 +30,8 @@
 .data hr {
   margin-top: 3em;
 }
+
+canvas .most-surveilled-chart {
+  height: 500em;
+  width: 500em;
+}
