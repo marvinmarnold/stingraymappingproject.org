@@ -1,24 +1,15 @@
-Meteor.startup(function(){
-  // Enable Mapbox plugins from https://www.mapbox.com/mapbox.js/plugins/ supported
-  // https://github.com/pauloborges/meteor-mapbox
-  Mapbox.load({plugins: ['minimap', 'markercluster', 'heat', 'locate']});
-});
-
 var map;
 var markers;
 var heat;
 Template.stingrayMap.rendered = function () {
     this.autorun(function (computation) {
       if (Mapbox.loaded()) {
-
-        // Set the Mapbox access token
-        L.mapbox.accessToken = Meteor.settings.public.mapboxPublicToken;
-
+        setMapboxToken();
         // Instantiate minimap
         var minimap = new L.Control.MiniMap(L.mapbox.tileLayer('mapbox.dark'));
 
         // Center the map at some hardcoded arbitrary point towards the middle of the USA
-        map = L.mapbox.map('map', 'mapbox.light').setView([38.731407,  -96.386617], 4).on('ready', function() {
+        map = L.mapbox.map('map', 'mapbox.streets').setView([38.731407,  -96.386617], 4).on('ready', function() {
           // Add minimap to primary map
           minimap.addTo(map);
         });
@@ -33,7 +24,7 @@ Template.stingrayMap.rendered = function () {
         map.legendControl.addLegend(document.getElementById('legend').innerHTML);
 
         heat = L.heatLayer([], {
-          maxZoom: 15,
+          maxZoom: 9,
           radius: 30,
           blur: 1,
           gradient: {
@@ -175,47 +166,4 @@ var populateStingrayReadings = function () {
 var displayStingrayReading = function (stingrayReadingId) {
   stingrayReading = StingrayReadings.findOne(stingrayReadingId);
   addReadingToMap(stingrayReading);
-}
-
-function normalize (grid) {
-    grid.features = grid.features.filter(function(cell){
-        var year = 1955;
-        while(year <= 2013){
-            if (cell.properties[year.toString()] > 0) return true;
-            year++;
-        }
-    });
-
-    var breaks = {};
-    var year = 1955;
-    while(year <= 2013){
-        var filtered = turf.featurecollection([]);
-        filtered.features = grid.features.filter(function(cell){
-            if (cell.properties[year.toString()] > 0) return true;
-        });
-
-        breaks[year.toString()] = turf.quantile(filtered, year.toString(), [20,40,60,70,80,90,95,99]);
-        year++;
-    }
-
-    year = 1955;
-    while(year <= 2013){
-        var translation = breaks[year.toString()];
-        var translations = [
-            [0, translation[0], 1],
-            [translation[1], translation[2], 2],
-            [translation[2], translation[3], 3],
-            [translation[3], translation[4], 4],
-            [translation[4], translation[5], 5],
-            [translation[5], translation[6], 6],
-            [translation[6], translation[7], 7],
-            [translation[7], Infinity, 8]
-        ];
-        grid = turf.reclass(grid, year.toString(), year.toString()+'_class', translations);
-        grid.features.forEach(function(cell){
-            if(!cell.properties[year.toString()+'_class']) cell.properties[year.toString()+'_class'] = 0;
-        })
-        year++;
-    }
-    return grid;
 }
