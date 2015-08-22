@@ -77,7 +77,6 @@ var displayStingrayReadings = function () {
   });
 
   map.addLayer(markers);
-  // map.redraw();
 }
 
 // Place  marker at (latitude, Longitude).
@@ -99,7 +98,6 @@ var addReadingToMap = function(stingrayReading) {
 
   map.fitBounds(markers.getBounds());
   heat.addLatLng(stingrayLatLng);
-  // map.redraw();
 }
 
 // All readings have the same color
@@ -176,7 +174,7 @@ var populateStingrayReadings = function () {
 // Add a cached StingrayReading with stingrayReadingId as a marker
 var displayStingrayReading = function (stingrayReadingId) {
   stingrayReading = StingrayReadings.findOne(stingrayReadingId);
-  addReadingToMarkers(stingrayReading);
+  addReadingToMap(stingrayReading);
 }
 
 function normalize (grid) {
