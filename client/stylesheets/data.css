@@ -1,6 +1,7 @@
 .map {
   height: 40em;
   min-height: 40em;
+  max-width: 100em;
 }
 
 .map-info {
