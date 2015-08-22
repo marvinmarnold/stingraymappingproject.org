@@ -86,12 +86,9 @@
   margin-bottom: 0 !important;
   padding-top: 0 !important;
   margin-top: 0 !important;
+  padding-right: 0 !important;
+  margin-right: 0 !important;
   padding-left: 0 !important;
-}
-
-#home-flags{
-  padding: 0 !important;
-  margin: 0 !important;
 }
 
 .home-care-problems {
