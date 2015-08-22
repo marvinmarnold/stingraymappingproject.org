@@ -33,8 +33,8 @@ Template.stingrayMap.rendered = function () {
         map.legendControl.addLegend(document.getElementById('legend').innerHTML);
 
         heat = L.heatLayer([], {
-          maxZoom: 11,
-          radius: 40,
+          maxZoom: 15,
+          radius: 30,
           blur: 1,
           gradient: {
             0.3: 'blue',
@@ -45,7 +45,7 @@ Template.stingrayMap.rendered = function () {
         }).addTo(map);
 
         // Set `markers` to a MarkerClusterGroup
-        markers = new L.MarkerClusterGroup();
+        // markers = new L.MarkerClusterGroup();
 
         // Load cached Stingray available
         if(!areStingrayReadingsLoaded()) {
@@ -76,27 +76,27 @@ var displayStingrayReadings = function () {
     addReadingToMap(stingrayReading);
   });
 
-  map.addLayer(markers);
+  // map.addLayer(markers);
 }
 
 // Place  marker at (latitude, Longitude).
 // Give the marker a certain symbol, color, and size based on its data and add styling to popup.
 var addReadingToMap = function(stingrayReading) {
   stingrayLatLng = new L.LatLng(stingrayReading.latitude, stingrayReading.longitude);
-  var marker = L.marker(stingrayLatLng, {
-      icon: L.mapbox.marker.icon({
-        'marker-symbol': stingrayReading.symbol,
-        'marker-color': stingrayReading.color,
-        'marker-size': stingrayReading.size
-      }),
-      title: stingrayReading.title,
-      description: stingrayReading.description
-  });
+  // var marker = L.marker(stingrayLatLng, {
+  //     icon: L.mapbox.marker.icon({
+  //       'marker-symbol': stingrayReading.symbol,
+  //       'marker-color': stingrayReading.color,
+  //       'marker-size': stingrayReading.size
+  //     }),
+  //     title: stingrayReading.title,
+  //     description: stingrayReading.description
+  // });
 
-  marker.bindPopup("<p><strong>" + stingrayReading.title + '<\/strong><\/p><p class=\"muted\">' + stingrayReading.description + '<\/p>');
-  markers.addLayer(marker);
+  // marker.bindPopup("<p><strong>" + stingrayReading.title + '<\/strong><\/p><p class=\"muted\">' + stingrayReading.description + '<\/p>');
+  // markers.addLayer(marker);
 
-  map.fitBounds(markers.getBounds());
+  // map.fitBounds(markers.getBounds());
   heat.addLatLng(stingrayLatLng);
 }
 
@@ -165,7 +165,7 @@ var populateStingrayReadings = function () {
       });
 
       displayStingrayReading(id);
-      map.addLayer(markers);
+      // map.addLayer(markers);
     }
 
   });

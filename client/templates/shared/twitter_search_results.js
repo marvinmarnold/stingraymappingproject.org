@@ -8,7 +8,7 @@ Template.twitterSearchResults.onRendered(function() {
   Meteor.call("getTwitterSearchResults", function(error, results) {
     if(error) {
       // TODO provide some type of error message
-      console.log("error");
+      console.log(error);
       return;
     }
     console.log(results);
