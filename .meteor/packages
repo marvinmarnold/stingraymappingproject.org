@@ -7,11 +7,9 @@
 meteor-platform
 iron:router
 pauloborges:mapbox@2.1.5
-okgrow:analytics
 sacha:spin
 nemo64:bootstrap
 less
 http
 momentjs:moment
-mrt:chartjs
 chart:chart
