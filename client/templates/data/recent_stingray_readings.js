@@ -118,11 +118,11 @@ var locationForReading = function(_stingrayReading) {
 
 // Long & Lat as sent from server truncated to 3 decimals
 var longitudeForReading = function(_stingrayReading) {
-  return _stingrayReading.long;
+  return _stingrayReading.longitude;
 }
 
 var latitudeForReading = function(_stingrayReading) {
-  return _stingrayReading.lat;
+  return _stingrayReading.latitude;
 }
 
 // Get all the Stingray Readings from the server
