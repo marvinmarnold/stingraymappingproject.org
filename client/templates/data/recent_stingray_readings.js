@@ -21,7 +21,7 @@ Template.recentStingrayReadings.rendered = function () {
         L.control.locate().addTo(map);
 
         // Add legend to map
-        map.legendControl.addLegend(document.getElementById('legend').innerHTML);
+        // map.legendControl.addLegend(document.getElementById('legend').innerHTML);
 
         heat = L.heatLayer([], {
           maxZoom: 9,
