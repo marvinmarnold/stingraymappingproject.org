@@ -15,20 +15,23 @@
 font-style: normal;
 margin-right: 0.5em;
 }.flaticon-android3:before {
-	content: "\e000";
+  content: "\e000";
 }
 .flaticon-check30:before {
-	content: "\e001";
+  content: "\e001";
+}
+.flaticon-clipboard105:before {
+  content: "\e002";
 }
 .flaticon-identification27:before {
-	content: "\e002";
+  content: "\e003";
 }
 .flaticon-pin67:before {
-	content: "\e003";
+  content: "\e004";
 }
 .flaticon-speechbubble56:before {
-	content: "\e004";
+  content: "\e005";
 }
 .flaticon-telephone114:before {
-	content: "\e005";
+  content: "\e006";
 }

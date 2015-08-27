@@ -18,7 +18,7 @@
 
 .home-intro-title {
   padding-top: 3em;
-  font-size: 3em;
+  font-size: 3.5em;
 }
 
 .home-intro-description {
@@ -34,7 +34,11 @@
 }
 
 #home-app {
-  margin: 5em 0;
+  margin: 2.5em 0;
+}
+
+.home-app-logo {
+  max-height: 17em;
 }
 
 #home h3 {
@@ -137,7 +141,7 @@
 }
 
 #home-end {
-  margin: 15em 0;
+  margin-top: 15em;
 }
 
 .home-first-amendment {
@@ -157,4 +161,9 @@
 
 .contact-bullet {
   margin-right: 1em;
+}
+
+.home-end-logo {
+  height: 25em;
+  margin: 10em 0;
 }
