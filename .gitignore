@@ -1,2 +1,4 @@
 *settings.json
-packages/meteor-imsi-catcher
+packages/meteor-imsi-catcher-catcher
+packages/meteor-imsi-catcher-catcher-secrets
+settings
