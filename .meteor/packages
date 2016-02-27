@@ -20,3 +20,11 @@ standard-minifier-js
 twbs:bootstrap
 marvin:imsi-catcher-catcher
 marvin:imsi-catcher-catcher-secrets
+force-ssl
+react
+fortawesome:fontawesome
+pauloborges:mapbox@2.2.3_2
+spiderable
+webapp
+kadira:react-layout
+kadira:flow-router

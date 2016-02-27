@@ -1,0 +1,1 @@
+STINGWATCH = "StingWatch"
