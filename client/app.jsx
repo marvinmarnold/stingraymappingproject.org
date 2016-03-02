@@ -16,7 +16,7 @@ App = React.createClass({
   // Show loading screen until app ready
   render() {
     if(this.data.ready) {
-      return this.props.content;
+      return <MainLayout>{this.props.content}</MainLayout>
     } else {
       return <LoadingPage />
     }
