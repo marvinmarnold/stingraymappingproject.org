@@ -1,3 +1,0 @@
-ForNearly = React.createClass({
-  
-})

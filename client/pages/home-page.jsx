@@ -10,6 +10,11 @@ HomePage = React.createClass({
   },
 
   render() {
-    return <h2>{STINGWATCH} Home</h2>
+    return (
+      <div id="home">
+        <HomeProblem />
+        <HomeSolution />
+      </div>
+    )
   }
 });
