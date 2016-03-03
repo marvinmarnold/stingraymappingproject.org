@@ -1,3 +1,5 @@
+@import "variables";
+
 html, body, #react-root {
   height: 100%;
   padding: 0 !important;
@@ -11,4 +13,20 @@ html, body, #react-root {
 
 .img-primary {
   height: 15rem;
+}
+
+.strip-dark {
+  background-color: $teal-dark;
+
+  a {
+    color: $teal-light;
+  }
+}
+
+.strip-light {
+  background-color: $teal-light;
+}
+
+.soft-box {
+  border-radius: 1.5em;
 }

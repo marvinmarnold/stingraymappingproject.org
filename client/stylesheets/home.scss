@@ -1,0 +1,31 @@
+@import "variables";
+
+#home-problem {
+  background-image: url("/home/home-problem.jpg");
+  background-size:   cover;                      /* <------ */
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: white;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#home-ndas {
+  background-image: url("/home/ndas.jpg");
+  background-size:   cover;                      /* <------ */
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: white;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#home-first-amendment {
+  background-image: url("/home/first-amendment.jpg");
+  background-size:   cover;                      /* <------ */
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: white;
+  padding: 0 !important;
+  margin: 0 !important;
+}

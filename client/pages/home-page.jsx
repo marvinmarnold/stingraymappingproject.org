@@ -14,6 +14,12 @@ HomePage = React.createClass({
       <div id="home">
         <HomeProblem />
         <HomeSolution />
+        <HomeWhatIs />
+        <HomeCanDo />
+        <HomeNDAs />
+        <HomeSpy />
+        <HomeFirstAmendment />
+        <HomeWhosUsing />
       </div>
     )
   }

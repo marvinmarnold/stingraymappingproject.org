@@ -1,9 +1,0 @@
-#home-problem {
-  background-image: url("/home/home-problem.jpg");
-  background-size:   cover;                      /* <------ */
-  background-repeat: no-repeat;
-  background-position: center center;
-  color: white;
-  padding: 0 !important;
-  margin: 0 !important;
-}
