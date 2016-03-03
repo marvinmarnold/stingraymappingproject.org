@@ -29,7 +29,7 @@ HomeFlags = React.createClass({
           <div className="col-md-1 col-xs-4  flag-col"><img src="home/flags/virginia.jpg" className="flag img-responsive" /></div>
 
           <div className="col-md-1 col-xs-4  flag-col"><img src="home/flags/washington.jpg" className="flag img-responsive" /></div>
-          <div className="col-md-1 col-xs-4  flag-col"><img src="home/flags/wisconsin.jpg" className="flag img-responsive" />
+          <div className="col-md-1 col-xs-4 offset-xs-4 offset-lg-0 flag-col"><img src="home/flags/wisconsin.jpg" className="flag img-responsive" />
           </div>
         </div>
       </div>
