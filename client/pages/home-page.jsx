@@ -20,6 +20,8 @@ HomePage = React.createClass({
         <HomeSpy />
         <HomeFirstAmendment />
         <HomeWhosUsing />
+        <HomeFlags />
+        <HomeEnd />
       </div>
     )
   }
