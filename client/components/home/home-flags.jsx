@@ -32,7 +32,6 @@ HomeFlags = React.createClass({
           <div className="col-md-1 col-xs-4  flag-col"><img src="home/flags/wisconsin.jpg" className="flag img-responsive" />
           </div>
         </div>
-
       </div>
     )
   }
