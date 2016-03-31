@@ -7,6 +7,7 @@
   "dependencies": {
     "meteor-node-stubs": "~0.2.0",
     "react": "^0.14.8",
+    "react-addons-pure-render-mixin": "^0.14.8",
     "react-dom": "^0.14.8",
     "react-mounter": "^1.1.0",
     "react-router": "^2.0.1"

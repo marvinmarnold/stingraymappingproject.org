@@ -18,3 +18,8 @@ static-html
 twbs:bootstrap
 fourseven:scss
 fortawesome:fontawesome
+aldeed:simple-schema
+aldeed:collection2
+react-meteor-data
+pauloborges:mapbox@2.2.3_2
+http
