@@ -17,7 +17,7 @@ getServiceCalls = function() {
 }
 
 Meteor.startup(function() {
-  // getServiceCalls()
+  getServiceCalls()
 })
 
 var sodaFetch = function(soda, offset) {

@@ -3,19 +3,16 @@ import React from 'react';
 let map
 let tractsLayer
 var priorityNum
+var nopdType
 
 export default class ServiceCallsMap extends React.Component {
   constructor(props) {
     super(props);
 
     priorityNum = new ReactiveVar(undefined)
+    nopdType = new ReactiveVar(undefined)
   }
-  // let map
-  // let tractsLayer
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   // return !nextProps.loading // && (nextProps.loading !== this.props.loading);
-  //   return false;
-  // }
+
   componentDidMount() {
     let thiz = this
     Tracker.autorun(function(){
@@ -40,6 +37,9 @@ export default class ServiceCallsMap extends React.Component {
           if(priorityNum.get())
             selector.priorityNum = priorityNum.get()
 
+          if(nopdType.get())
+            selector.nopdType = nopdType.get()
+
           Meteor.call("tracts/avg-waits", selector, function(error, avgWaits) {
             console.log("got waits");
 
@@ -58,7 +58,10 @@ export default class ServiceCallsMap extends React.Component {
 
   filterPriority(n) {
     priorityNum.set(n)
-    console.log(priorityNum.get());
+  }
+
+  filterType(_type) {
+    nopdType.set(_type)
   }
 
   render() {
@@ -68,10 +71,16 @@ export default class ServiceCallsMap extends React.Component {
           <div id='map' className='col-xs-12 col-lg-8'>
           </div>
           <div className='col-xs-12 col-lg-4'>
-            <h2>Filter by Priority (Working)</h2>
+            <h2>Filter by Priority</h2>
             <button onClick={() => this.filterPriority(undefined)}>All Priorities</button>
             <button onClick={() => this.filterPriority(1)}>Low Priority</button>
             <button onClick={() => this.filterPriority(2)}>High Priority</button>
+
+            <h2>Filter by Type</h2>
+            <button onClick={() => this.filterType(undefined)}><i className='fa fa-star'></i> All Types</button>
+            {_.map(NOPD_TYPES, (desc, _type) => {
+              return <button key={_type} onClick={() => this.filterType(_type)}><i className='fa fa-star'></i> {_type} - {desc}</button>
+            })}
           </div>
         </div>
 
