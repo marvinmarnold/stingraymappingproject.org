@@ -79,30 +79,33 @@ var insertServiceCall = function(doc) {
     }
 
     serviceCallId = ServiceCalls.insert(serviceCall)
+    sc = serviceCall
   }
 
-  var tractLookupURL = "http://data.fcc.gov/api/block/2010/find?latitude=" +
-    doc.location.latitude +
-    "&longitude=" + doc.location.longitude +
-    "&format=json"
+  if(!sc.tractId) {
+    var tractLookupURL = "http://data.fcc.gov/api/block/2010/find?latitude=" +
+      doc.location.latitude +
+      "&longitude=" + doc.location.longitude +
+      "&format=json"
 
-  console.log(tractLookupURL);
-  HTTP.get(tractLookupURL, function(error, response) {
-    console.log(response);
-    if(response.data && response.data.Block && response.data.Block.FIPS) {
+    // console.log(tractLookupURL);
+    HTTP.get(tractLookupURL, function(error, response) {
+      // console.log(response);
+      if(response.data && response.data.Block && response.data.Block.FIPS) {
 
-      var geoId = response.data.Block.FIPS
-      console.log(geoId);
-      if(geoId) {
-        console.log('got geoid');
-        geoId = geoId.substr(0,11)
-        var tract = Tracts.findOne({geoId: geoId})
+        var geoId = response.data.Block.FIPS
+        console.log(geoId);
+        if(geoId) {
+          console.log('got geoid');
+          geoId = geoId.substr(0,11)
+          var tract = Tracts.findOne({geoId: geoId})
 
-        if(tract) {
-          console.log('got tract');
-          ServiceCalls.update(serviceCallId, {$set: {tractId: tract._id}})
+          if(tract) {
+            console.log('got tract');
+            ServiceCalls.update(serviceCallId, {$set: {tractId: tract._id}})
+          }
         }
       }
-    }
-  })
+    })
+  }
 }

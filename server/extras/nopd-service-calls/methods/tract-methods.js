@@ -6,8 +6,8 @@ Meteor.methods({
   "tracts/avg-waits": function(selector) {
     var avgWaits = []
 
-    for(let i = 1; i <= NUM_DISTRICTS; i++) {
-      selector.district = i
+    _.each(Tracts.find().fetch(), tract => {
+      selector.tractId = tract._id
       selector.arrivedIn = {$exists: true}
 
       var serviceCalls = ServiceCalls.find(selector).fetch()
@@ -17,11 +17,21 @@ Meteor.methods({
       }, 0)
 
       avgWaits.push({
-        districtNum: i,
-        avg_wait: totalWait / serviceCalls.length
+        tractId: tract._id,
+        avg_wait: totalWait / serviceCalls.length,
+        pctWhite: tract.white / tract.totalPop * 100,
+        latlngs: tractLatLngs(tract._id)
       })
-    }
+    })
 
-    return _.sortBy(avgWaits, "avg_wait")
+    return avgWaits
+    // return _.sortBy(avgWaits, "avg_wait")
   }
 });
+
+var tractLatLngs = function(tractId) {
+  var boundaries = TractBoundaries.find({tractId: tractId}, {$sort: {ordinal: 1}}).fetch()
+  return _.map(boundaries, boundary => {
+    return [boundary.latitude, boundary.longitude]
+  })
+}
