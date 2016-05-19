@@ -1,13 +1,11 @@
 import React from 'react';
+import Navbar from './components/Navbar.jsx';
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+export default class AdminApp extends React.Component {
   render() {
     return (
       <div>
+        <Navbar />
         {this.props.children}
       </div>
     )

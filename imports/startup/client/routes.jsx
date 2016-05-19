@@ -7,14 +7,14 @@ import App from '../../ui/app.jsx';
 import HomePage from '../../ui/pages/home-page.jsx';
 import DataPage from '../../ui/pages/DataPage.jsx';
 
-import { AdminPage } from 'meteor/marvin:imsi-catcher-catcher-admin';
+import { getAdminRoutes } from 'meteor/marvin:imsi-catcher-catcher-admin';
 
 export const renderRoutes = () => (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={HomePage} />
       <Route path="data" component={DataPage} />
-      <Route path="admin" component={AdminPage} />
+      {getAdminRoutes()}
     </Route>
   </Router>
 );
