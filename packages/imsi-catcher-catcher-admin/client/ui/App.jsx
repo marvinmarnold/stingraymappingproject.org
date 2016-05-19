@@ -1,6 +1,4 @@
 import React from 'react';
-import Footer from './components/footer.jsx';
-import Navbar from './components/Navbar.jsx';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -10,9 +8,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Navbar />
         {this.props.children}
-        <Footer />
       </div>
     )
   }

@@ -5,8 +5,8 @@ export default class Navbar extends React.Component {
     return (
       <nav className="navbar navbar-dark bg-inverse">
         <a className="navbar-brand" href="/">
-          <img src='logoInverse32.gif' className='img-fluid navbar-logo' />
-
+          <img src='logoInverse32.gif' className='img-fluid navbar-logo pull-left m-r-1' />
+          <span className='navbar-name pull-right'>StingWatch</span>
         </a>
         <ul className="nav navbar-nav pull-xs-right">
           <li className="nav-item">
