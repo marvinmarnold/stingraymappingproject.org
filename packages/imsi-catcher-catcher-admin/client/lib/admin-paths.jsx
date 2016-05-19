@@ -11,6 +11,10 @@ export const ADMIN_PATHS = {
   SIM_READINGS: "sim-readings"
 }
 
+export function adminPathFor(endpoint) {
+  return "/" + ADMIN_PATHS.HOME + "/" + endpoint
+}
+
 export function getAdminRoutes() {
   return (
     <Route path={ADMIN_PATHS.HOME} component={AdminApp} >
