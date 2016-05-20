@@ -39,7 +39,10 @@ jquery@1.11.8
 launch-screen@1.0.11
 livedata@1.0.18
 logging@1.0.12
+marvin:device-id@0.0.1
+marvin:imsi-catcher-catcher@0.0.1
 marvin:imsi-catcher-catcher-admin@0.0.1
+matb33:collection-hooks@0.8.1
 mdg:validation-error@0.5.1
 meteor@1.1.14
 meteor-base@1.0.4

@@ -2,5 +2,6 @@ node_modules/
 packages/bootstrap
 packages/meteor-device-id
 packages/meteor-imsi-catcher-catcher
+packages/imsi-catcher-catcher-admin
 settings
 scripts
