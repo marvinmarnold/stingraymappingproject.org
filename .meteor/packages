@@ -22,7 +22,7 @@ aldeed:simple-schema
 aldeed:collection2
 react-meteor-data
 pauloborges:mapbox@2.2.3_2
-http
-reactive-var
 marvin:imsi-catcher-catcher-admin
 marvin:imsi-catcher-catcher
+marvin:device-id
+marvin:reactive-local-store

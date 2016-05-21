@@ -3,5 +3,6 @@ packages/bootstrap
 packages/meteor-device-id
 packages/meteor-imsi-catcher-catcher
 packages/imsi-catcher-catcher-admin
+packages/meteor-reactive-local-store
 settings
 scripts
