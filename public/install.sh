@@ -117,7 +117,7 @@ git clone git@github.com:marvinmarnold/meteor-imsi-catcher-catcher.git
 git clone git@github.com:marvinmarnold/meteor-reactive-local-store.git
 cd ..
 
-echo "Copying over settings"
+echo "Copy over settings"
 cp settings-example.json settings.json
 
 chmod +x stingwatch.sh
