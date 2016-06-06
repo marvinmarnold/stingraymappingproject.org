@@ -1,5 +1,5 @@
 import React from 'react';
-import Footer from './components/footer.jsx';
+import Footer from './components/Footer.jsx';
 import Navbar from './components/Navbar.jsx';
 
 export default class App extends React.Component {
