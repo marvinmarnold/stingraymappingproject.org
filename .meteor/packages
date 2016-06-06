@@ -26,3 +26,5 @@ marvin:imsi-catcher-catcher-admin
 marvin:imsi-catcher-catcher
 marvin:device-id
 marvin:reactive-local-store
+accounts-twitter
+service-configuration
